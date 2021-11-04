@@ -1,10 +1,11 @@
 package com.the.hackers.recipeproject.controller;
 
-import com.the.hackers.recipeproject.data.transfer.object.Category;
+
+import com.the.hackers.recipeproject.data.transfer.object.Ingredient;
 import com.the.hackers.recipeproject.data.transfer.object.Recipe;
 import com.the.hackers.recipeproject.data.transfer.object.User;
 import com.the.hackers.recipeproject.repository.UserRepository;
-import com.the.hackers.recipeproject.service.CategoryService;
+import com.the.hackers.recipeproject.service.IngredientService;
 import com.the.hackers.recipeproject.service.RecipeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,34 +17,36 @@ import java.security.Principal;
 import java.util.List;
 
 @Controller
-public class RecipeController {
+public class IngredientController {
+
+
+    @Autowired
+    private IngredientService ingredientService;
 
     @Autowired
     private RecipeService recipeService;
 
     @Autowired
-    private CategoryService categoryService;
-
-    @Autowired
     private UserRepository userRepository;
 
 
-    @GetMapping("/recipies")
-    public String getRecipies(Model model , Principal principal) {
+    @GetMapping("/ingredients")
+    public String getIngredients(Model model , Principal principal) {
         String currentUserName =principal.getName();
         User user =  userRepository.findByUsername(currentUserName);
-        List<Recipe> recipeList = this.recipeService.getRecipies();
-        List<Category> categories = this.categoryService.getCategories();
+        List<Ingredient> ingredientList = this.ingredientService.getIngredients();
+        List<Recipe> recipes = this.recipeService.getRecipies();
         model.addAttribute("user" , user);
-        model.addAttribute("recipies", recipeList);
-        model.addAttribute("categories", categories);
-        return "recipe";
+        model.addAttribute("ingredients", ingredientList);
+        model.addAttribute("recipies" , recipes);
+        return "ingredient";
     }
 
-    @PostMapping("/addRecipies")
-    public String addRecipies(Recipe recipe) {
-        this.recipeService.addRecipies(recipe);
-        return "redirect:/recipies";
+    @PostMapping("/addIngredients")
+    public String addIngredients(Ingredient ingredient) {
+        this.ingredientService.addIngredients(ingredient);
+        return "redirect:/ingredients";
     }
 
 }
+

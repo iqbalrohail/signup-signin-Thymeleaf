@@ -71,21 +71,21 @@
                 <b class="caret"></b>
             </a>
 
-                    <ul class="dropdown-menu extended logout">
-                        <div class="log-arrow-up"></div>
-                        <li class="eborder-top">
-                            <a href="#"><i class="icon_profile"></i> My Profile</a>
-                        </li>
-
-                        </li>
-                        <li>
-                            <a th:href="@{/logout}"><i class="icon_key_alt"></i> Log Out</a>
-                        </li>
-                    </ul>
+            <ul class="dropdown-menu extended logout">
+                <div class="log-arrow-up"></div>
+                <li class="eborder-top">
+                    <a href="#"><i class="icon_profile"></i> My Profile</a>
                 </li>
-                <!-- user login dropdown end -->
+
+                </li>
+                <li>
+                    <a th:href="@{/logout}"><i class="icon_key_alt"></i> Log Out</a>
+                </li>
             </ul>
-            <!-- notificatoin dropdown end-->
+        </li>
+        <!-- user login dropdown end -->
+        </ul>
+        <!-- notificatoin dropdown end-->
         </div>
     </header>
     <!--header end-->
@@ -96,12 +96,12 @@
             <!-- sidebar menu start-->
             <ul class="sidebar-menu">
 
-                    <ul class="sub">
-                        <li><a class="" th:href="@{/recipies}">Recipe</a></li>
-                        <li><a class="" th:href="@{/ingredients}">Ingredients</a></li>
-                        <li><a class="" th:href="@{/categories}">Category</a></li>
+                <ul class="sub">
+                    <li><a class="" th:href="@{/recipies}">Recipe</a></li>
+                    <li><a class="" th:href="@{/ingredients}">Ingredients</a></li>
+                    <li><a class="" th:href="@{/categories}">Category</a></li>
 
-                    </ul>
+                </ul>
                 </li>
 
 
@@ -137,27 +137,22 @@
 
 
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Create Recipe</button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Add Category</button>
 
-            <h1>List of Recipes</h1>
+            <h1>List of Categories</h1>
             <table class="table mt-3">
                 <thead>
                 <tr>
                     <th>#ID</th>
                     <th>description</th>
-                    <th>prepTime</th>
-                    <th>cookTime</th>
-                    <th>servings</th>
 
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="recipe : ${recipies}">
-                    <td th:text="${recipe.id}">1</td>
-                    <td th:text="${recipe.description}">Mark</td>
-                    <td th:text="${recipe.prepTime}">Otto</td>
-                    <td th:text="${recipe.cookTime}">@mdo</td>
-                    <td th:text="${recipe.servings}">@mdo</td>
+                <tr th:each="category : ${categories}">
+                    <td th:text="${category.id}">1</td>
+                    <td th:text="${category.description}">Mark</td>
+
                     <td>
 
                         </div>
@@ -189,14 +184,14 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Add recipe</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Add category</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                 <form
-                        th:action="@{/addRecipies}"
+                        th:action="@{/addCategories}"
                         method="post"
                 >
 
@@ -204,36 +199,6 @@
                         <label for="code-name" class="col-form-label">description:</label>
                         <input   type="text" class="form-control" id="code-name" name="description">
                     </div>
-
-                    <div class="form-group">
-                        <label for="capital-name" class="col-form-label">prepTime:</label>
-                        <input  type="time" class="form-control timepicker" id="capital-name" name="prepTime">
-                    </div>
-
-
-
-                    <div class="form-group">
-                        <label for="nationality-name" class="col-form-label">cookTime:</label>
-                        <input  type="time" class="form-control timepicker timepicker" id="nationality-name" name="cookTime">
-                    </div>
-                    <div class="form-group">
-                        <label for="continent-name" class="col-form-label">servings:</label>
-                        <input  type="text" class="form-control" id="continent-name" name="servings">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="ddlCountryDetails" class="col-form-label">Category: </label>
-                        <select class="form-control" id="ddlCountryDetails" name="categoryid">
-                            <option>-SELECT-</option>
-
-                            <option th:each="category : ${categories}"
-                                    th:value="${category.id} "
-                                    th:text="${category.description}">
-                            </option>
-
-                        </select>
-                    </div>
-
 
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary">Submit</button>
@@ -262,7 +227,7 @@
 <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
 <!--custome script for all page-->
 <script src="js/scripts.js"></script>
-<script src="js/recipe.js"></script>
+<script src="js/category.js"></script>
 
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
