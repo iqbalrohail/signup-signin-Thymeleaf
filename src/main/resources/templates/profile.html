@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Creative - Bootstrap 3 Responsive Admin Template">
+  <meta name="author" content="GeeksLabs">
+  <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
+  <link rel="shortcut icon" href="img/favicon.png">
+
+  <title>User Profile</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <!-- bootstrap theme -->
+  <link href="css/bootstrap-theme.css" rel="stylesheet">
+  <!--external css-->
+  <!-- font icon -->
+  <link href="css/elegant-icons-style.css" rel="stylesheet" />
+  <link href="css/font-awesome.min.css" rel="stylesheet" />
+  <!-- Custom styles -->
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/style-responsive.css" rel="stylesheet" />
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 -->
+  <!--[if lt IE 9]>
+  <script src="js/html5shiv.js"></script>
+  <script src="js/respond.min.js"></script>
+  <script src="js/lte-ie7.js"></script>
+  <![endif]-->
+
+
+</head>
+
+<body>
+<!-- container section start -->
+<section id="container" class="">
+  <!--header start-->
+  <header class="header dark-bg">
+    <div class="toggle-nav">
+      <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom"><i class="icon_menu"></i></div>
+    </div>
+
+    <!--logo start-->
+    <a href="index.html" class="logo">Nice <span class="lite">Admin</span></a>
+    <!--logo end-->
+
+
+  <section id="container" class="">
+    <!--header start-->
+
+    <header class="header dark-bg">
+      <div class="toggle-nav">
+        <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom"><i
+                class="icon_menu"></i></div>
+      </div>
+
+      <!--logo start-->
+      <a href="index.html" class="logo">Recipe <span class="lite">Project</span></a>
+      <!--logo end-->
+
+
+      <li class="dropdown" style="position:absolute;right:0px;width:25%;height:10px;">
+        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="profile-ava">
+                                <img alt="" src="" th:src="@{'/img/'+${user.photo}}" width="30" height="30">
+                            </span>
+
+          <span class="username" th:text="${user.username}"></span>
+
+          <b class="caret"></b>
+        </a>
+
+        <ul class="dropdown-menu extended logout">
+          <div class="log-arrow-up"></div>
+          <li class="eborder-top">
+            <a th:href="@{/profile}"><i class="icon_profile"></i> My Profile</a>
+          </li>
+
+          </li>
+          <li>
+            <a th:href="@{/logout}"><i class="icon_key_alt"></i> Log Out</a>
+          </li>
+        </ul>
+      </li>
+      <!-- user login dropdown end -->
+      </ul>
+      <!-- notificatoin dropdown end-->
+      </div>
+    </header>
+    <!--header end-->
+
+    <!--sidebar start-->
+    <aside>
+      <div id="sidebar" class="nav-collapse ">
+        <!-- sidebar menu start-->
+        <ul class="sidebar-menu">
+
+
+          <ul class="sub">
+            <li><a class="" th:href="@{/recipies}">Recipe</a></li>
+            <li><a class="" th:href="@{/ingredients}">Ingredients</a></li>
+            <li><a class="" th:href="@{/categories}">Category</a></li>
+            <li><a class="" th:href="@{/planMeals}">Plan A Meal</a></li>
+
+
+          </ul>
+          </li>
+
+
+        </ul>
+        <!-- sidebar menu end-->
+      </div>
+    </aside>
+    <!--sidebar end-->
+
+  <!--main content start-->
+  <section id="main-content">
+    <section class="wrapper">
+      <div class="row">
+        <div class="col-lg-12">
+          <h3 class="page-header"><i class="fa fa-user-md"></i> </h3>
+          <ol class="breadcrumb">
+            <li><i class="fa fa-home"></i><a href="index.html"></a></li>
+            <li><i class="icon_documents_alt"></i></li>
+            <li><i class="fa fa-user-md"></i></li>
+          </ol>
+        </div>
+      </div>
+      <div class="row">
+        <!-- profile-widget -->
+        <div class="col-lg-12">
+          <div class="profile-widget profile-widget-info">
+            <div class="panel-body">
+              <div class="col-lg-2 col-sm-2">
+                <h4>          <span class="username" th:text="${user.username}"></span>
+                </h4>
+                <div class="follow-ava">
+                  <img alt="" src="" th:src="@{'/img/'+${user.photo}}" width="100" height="100">
+                </div>
+                <h6>Administrator</h6>
+              </div>
+              <div class="col-lg-4 col-sm-4 follow-info">
+                <p>Hello I’m  <span class="username" th:text="${user.username}"></span> a recipe creater. I provide the best recipes for everyone. If you really want to make a friend, go to someone's house and eat with him... the people who give you their food give you their heart." ...</p>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- page start-->
+
+
+      <!-- page end-->
+    </section>
+  </section>
+  <!--main content end-->
+  <div class="text-right">
+    <div class="credits">
+
+      Designed by <a href="https://bootstrapmade.com/">The Hackers</a>
+    </div>
+  </div>
+</section>
+<!-- container section end -->
+<!-- javascripts -->
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<!-- nice scroll -->
+<script src="js/jquery.scrollTo.min.js"></script>
+<script src="js/jquery.nicescroll.js" type="text/javascript"></script>
+<!-- jquery knob -->
+<script src="assets/jquery-knob/js/jquery.knob.js"></script>
+<!--custome script for all page-->
+<script src="js/scripts.js"></script>
+
+<script>
+  //knob
+  $(".knob").knob();
+</script>
+
+
+</body>
+
+</html>

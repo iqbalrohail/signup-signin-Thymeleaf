@@ -42,4 +42,13 @@ public class View {
         return "register";
     }
 
+    @GetMapping("/profile")
+    public String profile(Model model , Principal principal) {
+
+        String currentUserName = principal.getName();
+        User user = userRepository.findByUsername(currentUserName);
+        model.addAttribute("user", user);
+        return "profile";
+    }
+
 }
