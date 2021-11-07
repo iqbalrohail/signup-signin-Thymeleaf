@@ -21,6 +21,23 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
+
+//
+//Project: COMP 3095 Recipe Assignment
+//        * Assignment: 1 Web Development
+//        * Author(s): Shehzad Contractor Student Number: 101285996
+//        Amanda Caglioni    Student Number: 101237363
+//        Rohan Khullar      Student Number: 101284533
+//        Vishwa Mavani      Student Number: 101285743
+//        * Date: 7th November 2021
+//        * Description: This is a User controller class which has one base urls /users
+//                       which allows the user to register into the application . The main
+//                       concept of registration process is that the whole process of registration
+//                       is done through Spring Security for better security purposes and pass Encryption
+//
+
+
+
 @Controller
 public class UserController {
 

@@ -9,6 +9,18 @@ import org.springframework.stereotype.Service;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
+
+//
+//Project: COMP 3095 Recipe Assignment
+//        * Assignment: 1 Web Development
+//        * Author(s): Shehzad Contractor Student Number: 101285996
+//        Amanda Caglioni    Student Number: 101237363
+//        Rohan Khullar      Student Number: 101284533
+//        Vishwa Mavani      Student Number: 101285743
+//        * Date: 7th November 2021
+//        * Description: This is a Recipe service class which contains the actual business logic for
+//                       adding and getting the recipe details using JPA methods
+
 @Service
 public class RecipeService {
 

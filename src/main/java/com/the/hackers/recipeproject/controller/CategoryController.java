@@ -11,8 +11,23 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.persistence.OneToMany;
 import java.security.Principal;
 import java.util.List;
+//
+//Project: COMP 3095 Recipe Assignment
+//        * Assignment: 1 Web Development
+//        * Author(s): Shehzad Contractor Student Number: 101285996
+//        Amanda Caglioni    Student Number: 101237363
+//        Rohan Khullar      Student Number: 101284533
+//        Vishwa Mavani      Student Number: 101285743
+//        * Date: 7th November 2021
+//        * Description: This is a category controller file which has two base urls /categories and
+//                       /addCategories which return a category.html page in the template section
+//                       so as the Category module have @OneToMany mapping with recipe module
+//                       so it is necessary to add a category first before adding a recipe.
+
+
 
 @Controller
 public class CategoryController {

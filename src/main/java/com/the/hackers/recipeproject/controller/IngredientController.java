@@ -16,6 +16,21 @@ import org.springframework.web.bind.annotation.PostMapping;
 import java.security.Principal;
 import java.util.List;
 
+//
+//Project: COMP 3095 Recipe Assignment
+//        * Assignment: 1 Web Development
+//        * Author(s): Shehzad Contractor Student Number: 101285996
+//        Amanda Caglioni    Student Number: 101237363
+//        Rohan Khullar      Student Number: 101284533
+//        Vishwa Mavani      Student Number: 101285743
+//        * Date: 7th November 2021
+//        * Description: This is a Ingredient controller class which has two base urls /ingredients and
+//                       /addIngredients which return an ingredient.html page in the template section
+//                       so as the Ingredient module have @ManyToMany mapping with recipe module
+//                       so it is necessary to add a recipe detail first before adding an ingredient.
+
+
+
 @Controller
 public class IngredientController {
 

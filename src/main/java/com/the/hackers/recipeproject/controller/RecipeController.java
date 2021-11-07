@@ -18,6 +18,21 @@ import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 
+
+//
+//Project: COMP 3095 Recipe Assignment
+//        * Assignment: 1 Web Development
+//        * Author(s): Shehzad Contractor Student Number: 101285996
+//        Amanda Caglioni    Student Number: 101237363
+//        Rohan Khullar      Student Number: 101284533
+//        Vishwa Mavani      Student Number: 101285743
+//        * Date: 7th November 2021
+//        * Description: This is a Recipe controller class which has two base urls /recipees and
+//                       /addRecipies which return a recipe.html page in the template section
+//                       so as the Recipe module have @ManyToOne mapping with category module
+//                       so it is necessary to add a category detail first before adding a recipe detail.
+
+
 @Controller
 public class RecipeController {
 
