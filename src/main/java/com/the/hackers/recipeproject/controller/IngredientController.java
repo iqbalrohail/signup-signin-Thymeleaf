@@ -2,6 +2,7 @@ package com.the.hackers.recipeproject.controller;
 
 
 import com.the.hackers.recipeproject.data.transfer.object.Ingredient;
+import com.the.hackers.recipeproject.data.transfer.object.Ingredient;
 import com.the.hackers.recipeproject.data.transfer.object.Recipe;
 import com.the.hackers.recipeproject.data.transfer.object.User;
 import com.the.hackers.recipeproject.repository.UserRepository;
@@ -10,11 +11,11 @@ import com.the.hackers.recipeproject.service.RecipeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.util.List;
+import java.util.Optional;
 
 //
 //Project: COMP 3095 Recipe Assignment
@@ -62,6 +63,29 @@ public class IngredientController {
         this.ingredientService.addIngredients(ingredient);
         return "redirect:/ingredients";
     }
+
+
+    @GetMapping("/updateIngredientById")
+    @ResponseBody
+    public Optional<Ingredient> updateIngredientById(int id) {
+        return this.ingredientService.updateIngredientById(id);
+    }
+
+    @RequestMapping(value = "/updateIngredients", method = {RequestMethod.PUT, RequestMethod.GET})
+    public String updateIngredients(Ingredient ingredient) {
+        this.ingredientService.updateIngredients(ingredient);
+        return "redirect:/Ingredients";
+    }
+
+    @RequestMapping(value = "/deleteIngredients/{id}", method = {RequestMethod.DELETE, RequestMethod.GET})
+    public String deleteContact(@PathVariable("id") long id) {
+        this.ingredientService.deleteIngredients(id);
+        return "redirect:/Ingredients";
+    }
+
+
+
+
 
 }
 

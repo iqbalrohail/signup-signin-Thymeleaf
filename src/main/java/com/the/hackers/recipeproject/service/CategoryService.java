@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
+import java.util.Optional;
 
 
 //
@@ -35,6 +36,10 @@ public class CategoryService {
         return categoryRepository.saveAndFlush(category);
     }
 
+    public Category helperUpdatecategory(Category category) {
+        return categoryRepository.saveAndFlush(category);
+    }
+
     public List<Category> getCategories() {
         return categoryRepository.findAll();
     }
@@ -49,4 +54,36 @@ public class CategoryService {
             session.setAttribute("message", new MessageDto("Error adding category details!", "alert-danger"));
         }
     }
+
+    public void updateCategories(Category category) {
+        try {
+            helperUpdatecategory(category);
+            session.setAttribute("message", new MessageDto("category details have been Uploaded !", "alert-success"));
+        } catch (Exception e) {
+            session.setAttribute("message", new MessageDto("Error uploading category details ! !", "alert-danger"));
+        }
+    }
+
+    public Optional<Category> updateCategoryById(long id) {
+        return this.categoryRepository.findById(id);
+
+    }
+
+    public void deleteCategories(Long id)
+    {
+        try {
+
+            Category category =this.categoryRepository.findById(id).get();
+            this.categoryRepository.delete(category);
+            session.setAttribute("message", new MessageDto("Category details have been deleted !", "alert-danger"));
+        }catch (Exception e)
+        {
+            session.setAttribute("message", new MessageDto("Error deleting Category !", "alert-danger"));
+
+
+        }
+    }
+
+
+
 }

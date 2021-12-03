@@ -8,12 +8,12 @@ import com.the.hackers.recipeproject.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.OneToMany;
 import java.security.Principal;
 import java.util.List;
+import java.util.Optional;
 //
 //Project: COMP 3095 Recipe Assignment
 //        * Assignment: 1 Web Development
@@ -55,6 +55,26 @@ public class CategoryController {
         this.categoryService.addCategories(category);
         return "redirect:/categories";
     }
+
+    @GetMapping("/updateCategoryById")
+    @ResponseBody
+    public Optional<Category> updateCategoryById(int id) {
+        return this.categoryService.updateCategoryById(id);
+    }
+
+    @RequestMapping(value = "/updateCategories", method = {RequestMethod.PUT, RequestMethod.GET})
+    public String updateCategories(Category category) {
+        this.categoryService.updateCategories(category);
+        return "redirect:/categories";
+    }
+
+    @RequestMapping(value = "/deleteCategories/{id}", method = {RequestMethod.DELETE, RequestMethod.GET})
+    public String deleteContact(@PathVariable("id") long id) {
+        this.categoryService.deleteCategories(id);
+        return "redirect:/categories";
+    }
+
+
 
 }
 

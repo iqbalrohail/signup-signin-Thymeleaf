@@ -91,7 +91,10 @@
                     <li><a class="" th:href="@{/recipies}">Recipe</a></li>
                     <li><a class="" th:href="@{/ingredients}">Ingredients</a></li>
                     <li><a class="" th:href="@{/categories}">Category</a></li>
+                    <li><a class="" th:href="@{/myEventPlanss}">MyEventPlans</a></li>
                     <li><a class="" th:href="@{/planMeals}">Plan A Meal</a></li>
+                    <li><a class="" th:href="@{/items}">Items</a></li>
+                    <li><a class="" th:href="@{/shoppingLists}">ShoppingLists</a></li>
 
 
                 </ul>
@@ -142,6 +145,8 @@
                     <th>description</th>
                     <th>amount</th>
                     <th>RecipeDescription</th>
+                    <th>Actions</th>
+
                 </tr>
                 </thead>
                 <tbody>
@@ -151,7 +156,15 @@
                     <td th:text="${ingredient.amount}">Otto</td>
                     <td th:text="${ingredient.recipe.description}">@mdo</td>
                     <td>
+                        <div class="btn-group" role="group" aria-label="Basic example">
 
+                            <a th:href="@{/updateIngredientById/(id = ${ingredient.id})}" id="editButton" class="btn btn-primary" >Update</a>
+                            <button type="submit"
+
+                                    th:onclick="|deleteIngredient(${ingredient.id})|"    class="btn btn-danger" >Delete
+
+                            </button>
+                        </div>
                         </div>
 
                     </td>
@@ -235,6 +248,70 @@
 -->
 
 
+<!-- update Modal -->
+
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editModalLabel">Update ingredient</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="put"
+                      th:action="@{/updateIngredients}"
+                >
+                    <div class="form-group">
+                        <label for="code-name" class="col-form-label">ID:</label>
+                        <input  type="text" class="form-control" id="idEdit" name="id" readonly>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="code-name" class="col-form-label">description:</label>
+                        <input type="text" class="form-control" id="descriptionEdit" name="description">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="capital-name" class="col-form-label">amount:</label>
+                        <input type="text" class="form-control " id="amountEdit" name="amount">
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="ddlCountryDetails" class="col-form-label">Recipe: </label>
+                        <select class="form-control" id="ddlCategoryDetails" name="recipeid">
+                            <option>-SELECT-</option>
+
+                            <option th:each="recipe : ${recipies}"
+                                    th:value="${recipe.id} "
+                                    th:text="${recipe.description}">
+                            </option>
+
+                        </select>
+                    </div>
+
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--
+  end of modal
+-->
+
+
+
 <!-- container section end -->
 <!-- javascripts -->
 <script src="js/jquery.js"></script>
@@ -247,6 +324,35 @@
 <script src="js/ingredient.js"></script>
 
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<script>
+
+    function deleteIngredient(id)
+    {
+
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, It will delete all your ingredients !",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+
+                    window.location = "/deleteIngredients/"+id;
+
+                } else {
+                    swal("Your ingredient information is safe!");
+                }
+            });
+
+    }
+
+
+</script>
+
+
 
 </body>
 
