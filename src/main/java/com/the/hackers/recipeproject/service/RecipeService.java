@@ -49,5 +49,11 @@ public class RecipeService {
         }
     }
 
+    public List<Recipe> getByFav()
+    {
+        return recipeRepository.findAllByIsFavouriteIsTrue();
+
+    }
+
 
 }

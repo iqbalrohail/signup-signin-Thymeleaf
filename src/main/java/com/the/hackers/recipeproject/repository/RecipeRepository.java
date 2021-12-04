@@ -11,4 +11,5 @@ import java.util.List;
 public interface RecipeRepository extends JpaRepository<Recipe , Integer> {
 
     public List<Recipe> findByDescriptionContaining(String description);
+    public List<Recipe> findAllByIsFavouriteIsTrue();
 }

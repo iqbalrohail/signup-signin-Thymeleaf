@@ -48,6 +48,10 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
                         "/css/**",
                         "/fonts/**",
                         "/img/**").permitAll().antMatchers("/do_register").permitAll()
+                .antMatchers("/forgot").permitAll()
+                .antMatchers(("/sendOTP")).permitAll()
+                .antMatchers(("/settings")).permitAll()
+                .antMatchers(("/verification")).permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()

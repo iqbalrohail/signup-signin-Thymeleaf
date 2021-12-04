@@ -61,6 +61,18 @@ public class RecipeController {
         return "recipe";
     }
 
+    @GetMapping( "/favRecipies")
+    public String getByFav(Model model , Principal principal) {
+        String currentUserName =principal.getName();
+        User user =  userRepository.findByUsername(currentUserName);
+        List<Recipe> recipeList = this.recipeService.getByFav();
+        model.addAttribute("user" , user);
+        model.addAttribute("recipies", recipeList);
+        return "favRecipe";
+    }
+
+
+
     @PostMapping("/addRecipies")
     public String addRecipies(Recipe recipe) {
         this.recipeService.addRecipies(recipe);

@@ -28,6 +28,7 @@ public class Recipe {
     private String prepTime;
     private String cookTime;
     private String servings;
+    private Boolean isFavourite;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
     private List<Ingredient> ingredients;
