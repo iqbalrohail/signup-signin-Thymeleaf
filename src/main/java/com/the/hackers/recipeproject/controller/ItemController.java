@@ -13,6 +13,18 @@ import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 
+//
+//Project: COMP 3095 Recipe Assignment
+//        * Assignment: 1 Web Development
+//        * Author(s): Shehzad Contractor Student Number: 101285996
+//        Amanda Caglioni    Student Number: 101237363
+//        Rohan Khullar      Student Number: 101284533
+//        Vishwa Mavani      Student Number: 101285743
+//        * Date: 7th November 2021
+//        * Description: This is a Item controller class which has the base urls for performing CRUD
+//                       operations on Item module.
+//
+
 @Controller
 public class ItemController {
 

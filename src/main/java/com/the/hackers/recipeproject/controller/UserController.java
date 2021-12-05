@@ -2,6 +2,7 @@ package com.the.hackers.recipeproject.controller;
 
 import com.the.hackers.recipeproject.data.transfer.object.MessageDto;
 import com.the.hackers.recipeproject.data.transfer.object.User;
+import com.the.hackers.recipeproject.repository.UserRepository;
 import com.the.hackers.recipeproject.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +46,9 @@ public class UserController {
     private UserService userService;
 
     @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @GetMapping("/users")
@@ -64,6 +68,13 @@ public class UserController {
                 File saveFile = new ClassPathResource("static/img").getFile();
                 Files.copy(file.getInputStream(), Paths.get(saveFile.getAbsolutePath() + File.separator + file.getOriginalFilename()), StandardCopyOption.REPLACE_EXISTING);
             }
+
+            if(userRepository.findByUsername(user.getUsername()) !=null)
+            {
+                session.setAttribute("message",new MessageDto("user is already registered with this name! Try different" , "alert-danger"));
+                return "register";
+            }
+
             user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
             userService.addUsers(user);
             model.addAttribute("user" , new User());

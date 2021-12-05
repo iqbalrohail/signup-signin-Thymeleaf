@@ -22,7 +22,7 @@ public class Ingredient {
     private String description;
     private String amount;
 
-    @ManyToOne
+    @ManyToOne()
     @JoinColumn(name="recipeid", insertable=false, updatable=false)
     private Recipe recipe;
 
